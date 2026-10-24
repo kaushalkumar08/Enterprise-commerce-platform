@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise E-Commerce Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="brand">⚡ Enterprise Suite</div>
+    <div id="navControls">
+      <span id="userProfileBadge" class="user-badge" style="display:none;"></span>
+      <button id="authTriggerBtn" onclick="toggleAuthModal()">Login / Register</button>
+    </div>
+  </nav>
+
+  <main class="main-container">
+    <section id="adminAnalyticsSection" class="dashboard-block admin-only" style="display:none;">
+      <h2>Executive Analytics Dashboard</h2>
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <h4>Total Revenue</h4>
+          <p id="metricRevenue">$0.00</p>
+        </div>
+        <div class="metric-card">
+          <h4>Total Orders</h4>
+          <p id="metricOrders">0</p>
+        </div>
+        <div class="metric-card">
+          <h4>Active Products</h4>
+          <p id="metricProducts">0</p>
+        </div>
+        <div class="metric-card">
+          <h4>Customers</h4>
+          <p id="metricUsers">0</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="controls-bar">
+      <input type="text" id="searchInput" placeholder="Search catalog by title or category..." oninput="fetchCatalog()">
+      <select id="categoryFilter" onchange="fetchCatalog()">
+        <option value="">All Categories</option>
+        <option value="Hardware">Hardware</option>
+        <option value="Monitors">Monitors</option>
+        <option value="Furniture">Furniture</option>
+      </select>
+    </div>
+
+    <section class="dashboard-block">
+      <h2>Product Catalog</h2>
+      <div id="catalogGrid" class="catalog-grid"></div>
+    </section>
+  </main>
+
+  <div id="authModal" class="modal">
+    <div class="modal-card">
+      <span class="close-icon" onclick="toggleAuthModal()">&times;</span>
+      <h3 id="modalHeader">Access Portal</h3>
+      <form id="authForm" onsubmit="handleAuthSubmit(event)">
+        <input type="text" id="authName" placeholder="Full Name">
+        <input type="email" id="authEmail" placeholder="Corporate Email" required>
+        <input type="password" id="authPassword" placeholder="Password" required>
+        <select id="authRole">
+          <option value="customer">Customer Account</option>
+          <option value="admin">Admin Portal Account</option>
+        </select>
+        <button type="submit" id="authSubmitBtn">Login</button>
+        <p class="toggle-mode" onclick="toggleAuthMode()">Switch between Login / Register</p>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
