@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5600/api';
+const API_URL = 'https://enterprise-commerce-platform.onrender.com';
 let token = localStorage.getItem('token') || '';
 let currentUser = JSON.parse(localStorage.getItem('user') || 'null');
 let isRegisterMode = false;
